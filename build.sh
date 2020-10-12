@@ -1,0 +1,1 @@
+docker build -f ubuntu/Dockerfile -t nrandell/openvino ubuntu
