@@ -1,0 +1,25 @@
+name: Build nuget package for windows
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.100-rc.1.20452.10
+
+      - name: Package
+        run: dotnet pack -c Release -o package windows/openvinocvsharpextern/OpenVinoSharp4.win.csproj
+
+      - name: Publish
+        run: dotnet nuget push --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate package/*nupkg
