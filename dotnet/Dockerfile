@@ -10,4 +10,4 @@ RUN apt-get update && \
 
 
 
-COPY --from=openvino ["/opt/intel/openvino", "/opt/intel/openvino"]
+COPY --from=openvino ["/opt/intel/openvino_2021", "/opt/intel/openvino_2021"]
