@@ -32,4 +32,4 @@ RUN mkdir /install \
      && dotnet pack -o /install
 
 
-RUN dotnet nuget push ./install/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_KEY}
+RUN dotnet nuget push /install/*nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_KEY}
