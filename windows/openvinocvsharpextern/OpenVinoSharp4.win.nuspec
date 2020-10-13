@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>OpenVinoSharp4.win</id>
+        <version>4.4.0.20201012-beta.1</version>
+        <title>OpenVinoSharp4 native bindings for Windows x64</title>
+        <authors>shimat,nrandell</authors>
+        <license type="expression">BSD-3-Clause</license>
+        <projectUrl>https://github.com/nrandell/openvino-build</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/shimat/opencvsharp/master/nuget/icon/opencvsharp.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Internal implementation package for OpenCvSharp to work on Windows with Intel OpenVino.</description>
+        <summary>Internal implementation package for OpenCvSharp to work on Windows with Intel OpenVino.</summary>
+        <releaseNotes></releaseNotes>
+        <copyright>Copyright 2008-2020</copyright>
+        <tags>Image Processing OpenCV Wrapper FFI opencvsharp</tags>
+        <dependencies>
+            <group targetFramework="net48"></group>
+            <group targetFramework="net461"></group>
+            <group targetFramework="netstandard2.0"></group>
+            <group targetFramework="netstandard2.1"></group>
+            <group targetFramework="netcoreapp2.1"></group>
+        </dependencies>
+        <frameworkAssemblies>
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <file src=".\OpenCvSharpExtern.dll"   target="runtimes\win-x64\native" />
+    </files>
+</package>
