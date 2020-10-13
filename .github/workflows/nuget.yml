@@ -19,7 +19,7 @@ jobs:
           dotnet-version: 5.0.100-rc.1.20452.10
 
       - name: Package
-        run: dotnet pack -c Release -o package windows/openvinocvsharpextern/Nick.OpenVinoSharp4.win.csproj
+        run: dotnet pack -c Release -o package windows/openvinosharpextern/Nick.OpenVinoSharp4.win.csproj
 
       - name: Publish
         run: dotnet nuget push --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate package/*nupkg
