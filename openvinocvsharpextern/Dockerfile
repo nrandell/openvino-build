@@ -3,7 +3,6 @@ FROM nrandell/openvino as build
 USER root
 WORKDIR /source
 
-# RUN wget https://github.com/shimat/opencvsharp/archive/${OPENCVSHARP_VERSION}.zip && \
 RUN curl -k -L https://github.com/shimat/opencvsharp/archive/master.zip --output opencvsharp.zip \
     && unzip opencvsharp.zip \
     && rm opencvsharp.zip \
@@ -21,3 +20,16 @@ RUN cmake \
 
 RUN make 
 RUN make install
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0.100-rc.1-buster-slim
+ARG NUGET_KEY
+
+WORKDIR /build
+COPY --from=build /install/lib/libOpenCvSharpExtern.so ./
+
+COPY "OpenVinoSharp4.ubuntu.18.04-x64.*" ./
+RUN mkdir /install \
+     && dotnet pack -o /install
+
+
+RUN dotnet nuget push ./install/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_KEY}
