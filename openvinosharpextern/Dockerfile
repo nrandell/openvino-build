@@ -27,7 +27,7 @@ ARG NUGET_KEY
 WORKDIR /build
 COPY --from=build /install/lib/libOpenCvSharpExtern.so ./
 
-COPY "OpenVinoSharp4.ubuntu.18.04-x64.*" ./
+COPY "Nick.OpenVinoSharp4.ubuntu.18.04-x64.*" ./
 RUN mkdir /install \
      && dotnet pack -o /install
 
