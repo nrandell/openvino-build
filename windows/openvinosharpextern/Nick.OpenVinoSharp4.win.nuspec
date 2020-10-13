@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>OpenVinoSharp4.win</id>
+        <id>Nick.OpenVinoSharp4.win</id>
         <version>4.4.0.20201012-beta.1</version>
-        <title>OpenVinoSharp4 native bindings for Ubuntu 18.04 x64</title>
+        <title>OpenVinoSharp4 native bindings for Windows x64</title>
         <authors>shimat,nrandell</authors>
         <license type="expression">BSD-3-Clause</license>
         <projectUrl>https://github.com/nrandell/openvino-build</projectUrl>
@@ -25,6 +25,6 @@
         </frameworkAssemblies>
     </metadata>
     <files>
-        <file src="libOpenCvSharpExtern.so" target="runtimes/ubuntu.18.04-x64/native" />
+        <file src=".\OpenCvSharpExtern.dll"   target="runtimes\win-x64\native" />
     </files>
 </package>
