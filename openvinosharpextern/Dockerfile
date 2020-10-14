@@ -21,7 +21,7 @@ RUN cmake \
 RUN make 
 RUN make install
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0.100-rc.2-buster-slim
+FROM mcr.microsoft.com/dotnet/sdk:5.0.100-rc.2-focal
 ARG NUGET_KEY
 
 WORKDIR /build
