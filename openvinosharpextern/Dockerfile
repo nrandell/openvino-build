@@ -3,10 +3,10 @@ FROM nrandell/openvino as build
 USER root
 WORKDIR /source
 
-RUN curl -k -L https://github.com/shimat/opencvsharp/archive/master.zip --output opencvsharp.zip \
+RUN curl -k -L https://github.com/shimat/opencvsharp/archive/4.5.0.20201013.zip --output opencvsharp.zip \
     && unzip opencvsharp.zip \
     && rm opencvsharp.zip \
-    && mv opencvsharp-master opencvsharp 
+    && mv opencvsharp-* opencvsharp 
 
 WORKDIR /source/opencvsharp/src/OpenCvSharpExtern/
 COPY ["include_opencv.h", "CMakeLists.txt", "./"]
@@ -21,7 +21,7 @@ RUN cmake \
 RUN make 
 RUN make install
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0.100-rc.1-buster-slim
+FROM mcr.microsoft.com/dotnet/sdk:5.0.100-rc.2-buster-slim
 ARG NUGET_KEY
 
 WORKDIR /build

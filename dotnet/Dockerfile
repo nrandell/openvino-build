@@ -1,6 +1,6 @@
 FROM nrandell/openvino-minimal AS openvino
 
-FROM mcr.microsoft.com/dotnet/runtime:5.0.0-rc.1-buster-slim
+FROM mcr.microsoft.com/dotnet/runtime:5.0.0-rc.2-buster-slim
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libgdiplus \
