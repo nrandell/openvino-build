@@ -38,7 +38,7 @@ jobs:
           file: dotnet/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: nrandell/dotnet-openvino:5.0.0-rc.2-focal
+          tags: nrandell/dotnet-openvino:5.0.0-focal
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
