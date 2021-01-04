@@ -8,7 +8,7 @@ function ThrowOnNativeFailure {
     }
 }
 $ORIGINAL=$PSScriptRoot
-$FILE_SRC="$ORIGINAL\..\..\openvinosharpextern"
+$FILE_SRC="$ORIGINAL\openvinosharpextern"
 $SRC="c:\temp\openvinosharpextern"
 $INTEL_OPENVINO_DIR="c:\Program Files (x86)\IntelSWTools\openvino_2021"
 Remove-Item -rec $SRC -ErrorAction Ignore
@@ -42,7 +42,7 @@ try {
     ThrowOnNativeFailure
     cmake --install .
     ThrowOnNativeFailure
-    Copy-Item $SRC\install\bin\OpenCvSharpExtern.dll $ORIGINAL
+    Copy-Item $SRC\install\bin\OpenCvSharpExtern.dll $ORIGINAL\windows\openvinosharpextern
 }
 finally {
     Pop-Location
