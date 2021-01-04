@@ -17,7 +17,7 @@ Push-Location $SRC
 
 try {
 
-    Invoke-WebRequest -Uri https://github.com/shimat/opencvsharp/archive/4.5.0.20201013.zip -OutFile master.zip
+    Invoke-WebRequest -Uri https://github.com/shimat/opencvsharp/archive/4.5.1.20201229.zip -OutFile master.zip
     Expand-Archive -Path master.zip -DestinationPath $SRC
     Move-Item opencvsharp-* opencvsharp
     Remove-Item master.zip

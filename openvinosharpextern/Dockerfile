@@ -1,9 +1,19 @@
-FROM nrandell/openvino as build
+FROM nrandell/openvino-minimal as build
 
 USER root
 WORKDIR /source
 
-RUN curl -k -L https://github.com/shimat/opencvsharp/archive/4.5.0.20201013.zip --output opencvsharp.zip \
+ARG DEPENDENCIES="autoconf \
+                  automake \
+                  build-essential \
+                  cmake \
+                  curl"
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ${DEPENDENCIES} && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN curl -k -L https://github.com/shimat/opencvsharp/archive/4.5.1.20201229.zip --output opencvsharp.zip \
     && unzip opencvsharp.zip \
     && rm opencvsharp.zip \
     && mv opencvsharp-* opencvsharp 
