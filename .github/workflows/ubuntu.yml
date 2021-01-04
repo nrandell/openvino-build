@@ -30,20 +30,20 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: ${{ runner.os}}-buildx-
 
-      - name: Build and push minimal
-        uses: docker/build-push-action@v2
-        id: docker_build_minimal
-        with:
-          context: ubuntu-minimal
-          file: ubuntu-minimal/Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: nrandell/openvino-minimal:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
+      # - name: Build and push minimal
+      #   uses: docker/build-push-action@v2
+      #   id: docker_build_minimal
+      #   with:
+      #     context: ubuntu-minimal
+      #     file: ubuntu-minimal/Dockerfile
+      #     builder: ${{ steps.buildx.outputs.name }}
+      #     push: true
+      #     tags: nrandell/openvino-minimal:latest
+      #     cache-from: type=local,src=/tmp/.buildx-cache
+      #     cache-to: type=local,dest=/tmp/.buildx-cache
 
-      - name: Minimal image digest
-        run: echo ${{ steps.docker_build_minimal.outputs.digest }}
+      # - name: Minimal image digest
+      #   run: echo ${{ steps.docker_build_minimal.outputs.digest }}
 
       - name: Build ubuntu nuget package
         uses: docker/build-push-action@v2

@@ -1,5 +1,4 @@
-#ifndef _INCLUDE_OPENCV_H_
-#define _INCLUDE_OPENCV_H_
+#pragma once
 
 //#define ENABLED_CONTRIB
 //#undef ENABLED_CONTRIB
@@ -53,13 +52,14 @@
 #include <opencv2/face.hpp>
 #include <opencv2/img_hash.hpp>
 #include <opencv2/optflow.hpp>
+#include <opencv2/quality.hpp>
 #include <opencv2/tracking.hpp>
 #include <opencv2/xfeatures2d.hpp>
 #include <opencv2/ximgproc.hpp>
 #include <opencv2/xphoto.hpp>
-#include <opencv2/quality.hpp>
 #ifndef _WINRT_DLL
 #include <opencv2/dnn.hpp>
+#include <opencv2/dnn_superres.hpp>
 #include <opencv2/text.hpp>
 #endif
 #endif
@@ -84,4 +84,3 @@
 // Additional functions
 #include "my_functions.h"
 
-#endif

@@ -1,17 +1,20 @@
-FROM nrandell/openvino-minimal as build
+FROM openvino/ubuntu20_runtime as build
 
 USER root
 WORKDIR /source
 
-ARG DEPENDENCIES="autoconf \
-                  automake \
-                  build-essential \
-                  cmake \
-                  curl"
+# ARG DEPENDENCIES="autoconf \
+#                   automake \
+#                   build-essential \
+#                   cmake \
+#                   curl"
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ${DEPENDENCIES} && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN curl -k -L https://github.com/shimat/opencvsharp/archive/4.5.1.20201229.zip --output opencvsharp.zip \
     && unzip opencvsharp.zip \
@@ -37,7 +40,7 @@ ARG NUGET_KEY
 WORKDIR /build
 COPY --from=build /install/lib/libOpenCvSharpExtern.so ./
 
-COPY "Nick.OpenVinoSharp4.ubuntu.18.04-x64.*" ./
+COPY "Nick.OpenVinoSharp4.ubuntu.*" ./
 RUN mkdir /install \
      && dotnet pack -o /install
 

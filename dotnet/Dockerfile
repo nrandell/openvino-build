@@ -1,4 +1,4 @@
-FROM nrandell/openvino-minimal AS openvino
+FROM openvino/ubuntu20_runtime AS openvino
 
 FROM mcr.microsoft.com/dotnet/runtime:5.0.0-focal
 RUN apt-get update && \

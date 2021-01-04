@@ -8,7 +8,7 @@ IF(APPLE)
 ENDIF()
 
 file(GLOB OPENCVSHARP_FILES *.cpp)
-list(FILTER OPENCVSHARP_FILES EXCLUDE REGEX "^.*/(aruco|bgsegm|calib3d|face|img_hash|optflow|photo|quality|shape|superres|text|tracking|xfeatures2d|ximgproc|xphoto).*.cpp$")
+list(FILTER OPENCVSHARP_FILES EXCLUDE REGEX "^.*/(aruco|bgsegm|calib3d|dnn_superres|face|img_hash|optflow|photo|quality|shape|superres|text|tracking|xfeatures2d|ximgproc|xphoto).*.cpp$")
 
 find_package(OpenCV REQUIRED)
 find_package(InferenceEngine REQUIRED)
