@@ -45,17 +45,45 @@ jobs:
       - name: Minimal image digest
         run: echo ${{ steps.docker_build_minimal.outputs.digest }}
 
-      - name: Build and push full
+      - name: Build ubuntu nuget package
         uses: docker/build-push-action@v2
-        id: docker_build_full
+        id: docker_build_nuget
         with:
-          context: ubuntu
-          file: ubuntu/Dockerfile
+          context: openvinosharpextern
+          file: openvinosharpextern/Dockerfile
+          builder: ${{ steps.buildx.outputs.name }}
+          push: false
+          tags: nrandell/openvino-nuget:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          build-args: NUGET_KEY=${{ secrets.NUGET_KEY }}
+
+      - name: Build and push dotnet minimal
+        uses: docker/build-push-action@v2
+        id: docker_build_dotnet
+        with:
+          context: dotnet
+          file: dotnet/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: nrandell/openvino:latest
+          tags: nrandell/dotnet-openvino:5.0.0-focal
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
-      - name: Full image digest
-        run: echo ${{ steps.docker_build_full.outputs.digest }}
+      - name: Dotnet image digest
+        run: echo ${{ steps.docker_build_dotnet.outputs.digest }}
+
+      # - name: Build and push full
+      #   uses: docker/build-push-action@v2
+      #   id: docker_build_full
+      #   with:
+      #     context: ubuntu
+      #     file: ubuntu/Dockerfile
+      #     builder: ${{ steps.buildx.outputs.name }}
+      #     push: true
+      #     tags: nrandell/openvino:latest
+      #     cache-from: type=local,src=/tmp/.buildx-cache
+      #     cache-to: type=local,dest=/tmp/.buildx-cache
+
+      # - name: Full image digest
+      #   run: echo ${{ steps.docker_build_full.outputs.digest }}

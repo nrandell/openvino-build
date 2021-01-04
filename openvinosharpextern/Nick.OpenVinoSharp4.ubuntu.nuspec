@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>Nick.OpenVinoSharp4.ubuntu.18.04-x64</id>
-        <version>4.5.0.20201014</version>
+        <id>Nick.OpenVinoSharp4.ubuntu</id>
+        <version>4.5.1.20201229</version>
         <title>OpenVinoSharp4 native bindings for Ubuntu 18.04 x64</title>
         <authors>shimat,nrandell</authors>
         <license type="expression">BSD-3-Clause</license>

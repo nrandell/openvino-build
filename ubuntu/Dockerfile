@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 USER root
 WORKDIR /
@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 RUN useradd -ms /bin/bash openvino && \
     chown openvino -R /home/openvino
 
-ARG package_url=https://registrationcenter-download.intel.com/akdlm/irc_nas/17062/l_openvino_toolkit_p_2021.1.110.tgz
+ARG package_url=https://registrationcenter-download.intel.com/akdlm/irc_nas/17504/l_openvino_toolkit_runtime_ubuntu20_p_2021.2.185.tgz
 ARG TEMP_DIR=/tmp/openvino_installer
 
 ARG DEPENDENCIES="autoconf \
